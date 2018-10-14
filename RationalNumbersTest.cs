@@ -1,6 +1,7 @@
 // This file was auto-generated based on version 1.0.0 of the canonical data.
 
 using Xunit;
+using RationalNumbers.ExtMethods;
 
 public class RationalNumbersTest
 {
@@ -22,7 +23,7 @@ public class RationalNumbersTest
         Assert.Equal(new RationalNumber(-7, 6), new RationalNumber(-1, 2) + (new RationalNumber(-2, 3)));
     }
 
-    [Fact(Skip = "Remove to run test"]
+    [Fact]
     public void Add_a_rational_number_to_its_additive_inverse()
     {
         Assert.Equal(new RationalNumber(0, 1), new RationalNumber(1, 2) + (new RationalNumber(-1, 2)));

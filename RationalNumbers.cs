@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using RationalNumbers.ExtMethods;
 
 public static class RealNumberExtension
 {
@@ -9,10 +10,10 @@ public static class RealNumberExtension
     }
 }
 
-public struct RationalNumber
+public class RationalNumber
 {
-    int numerator;
-    int denominator;
+    public int numerator;
+    public int denominator;
     public RationalNumber(int numerator, int denominator)
     {
         this.numerator = numerator;
@@ -26,10 +27,10 @@ public struct RationalNumber
 
     public static RationalNumber operator +(RationalNumber r1, RationalNumber r2)
     {
-        RationalNumber result = new RationalNumber(0,0);
+        RationalNumber result = new RationalNumber(0, 0);
         result.numerator = (r1.numerator * r2.denominator) + (r2.numerator * r1.denominator);
         result.denominator = r1.denominator * r2.denominator;
-        return result;
+        return result.Reduce();
     }
 
     public RationalNumber Sub(RationalNumber r)
@@ -67,10 +68,10 @@ public struct RationalNumber
         throw new NotImplementedException("You need to implement this function.");
     }
 
-    public RationalNumber Reduce()
-    {
-        throw new NotImplementedException("You need to implement this function.");
-    }
+    //public RationalNumber Reduce()
+    //{
+    //    throw new NotImplementedException("You need to implement this function.");
+    //}
 
     public RationalNumber Exprational(int power)
     {
@@ -81,4 +82,11 @@ public struct RationalNumber
     {
         throw new NotImplementedException("You need to implement this function.");
     }
+
+    public override bool Equals(object obj)
+    {
+        RationalNumber castedObject = (RationalNumber)obj;
+        return this.numerator == castedObject.numerator && this.denominator == castedObject.denominator;     
+    }
+
 }
