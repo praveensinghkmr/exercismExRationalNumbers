@@ -11,8 +11,12 @@ public static class RealNumberExtension
 
 public struct RationalNumber
 {
+    int numerator;
+    int denominator;
     public RationalNumber(int numerator, int denominator)
     {
+        this.numerator = numerator;
+        this.denominator = denominator;
     }
 
     public RationalNumber Add(RationalNumber r)
@@ -22,7 +26,10 @@ public struct RationalNumber
 
     public static RationalNumber operator +(RationalNumber r1, RationalNumber r2)
     {
-        throw new NotImplementedException("You need to implement this operator.");
+        RationalNumber result = new RationalNumber(0,0);
+        result.numerator = (r1.numerator * r2.denominator) + (r2.numerator * r1.denominator);
+        result.denominator = r1.denominator * r2.denominator;
+        return result;
     }
 
     public RationalNumber Sub(RationalNumber r)
